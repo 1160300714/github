@@ -5,7 +5,7 @@
 </head>
 <body>
 	<p>nothing</p>
-	<div>
+	<div class="div">
 	    something new
 	</div>
 </body>

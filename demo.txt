@@ -5,5 +5,8 @@
 </head>
 <body>
 	<p>nothing</p>
+	<div>
+	    something new
+	</div>
 </body>
-</html
+</html>

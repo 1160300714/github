@@ -1,6 +1,135 @@
 @charset "utf-8";
+html{
+	font:12px '宋体';
+}
 .top{
 	background-color: #f7f7f7;
 	height: 26px;
 	border-bottom: 1px solid #d8d8d8;
+}
+.top_page{
+	width:  970px;
+	height:  26px;
+	margin: 0 auto;
+}
+.top_page_l{
+	line-height: 26px;
+}
+.top_page_r ul li{
+	float: left;
+	line-height: 26px;
+	padding-right: 10px;
+}
+.top_page_r ul li s{
+	width: 14px;
+	height: 12px;
+	background: url(../image/sprite.png);
+	display: inline-block;
+}
+.logo{
+	width: 970px;
+	height: 98px;
+	margin: 0 auto;
+}
+.logo_l{
+	height: 55px;
+	width: 200px;
+	margin: 24px 0 19px 9px; 
+	background:url(../image/sprite.png) -14px 0;
+	text-indent: -9999em;
+
+}
+.logo_r{
+	height: 42px;
+	width: 530px;
+	margin-top:29px;
+	border: 1px solid #c9c9c9;
+}
+.logo_r_content{
+	margin: 5px 5px 5px 4px;
+}
+.logo_r_search{
+	height: 28px;
+	width: 418px;
+	border: 1px solid #c9c9c9;
+	color: gray;
+}
+.logo_r_button{
+	width: 99px;
+	height: 30px;
+	color: white;
+	background-color: #2f70d0;
+}
+.nav{
+	height:25px; 
+	width: 970px;
+	margin: 0 auto;
+	border-bottom: 2px solid #0266ca;
+}
+.nav li{
+	padding: 0 15px 0 15px;
+	float: left;
+	font-size: 14px;
+	line-height: 26px;
+	font-weight: bold;
+}
+.nav li a{
+	color: #0266a3;
+}
+.nav li:hover{
+	background-color: #0266ca;
+}
+.nav li:hover a{
+	color: white;
+}
+.banner{
+	width: 970px;
+	height: 210px;
+	margin:0 auto;
+
+}
+.subNav{
+	width: 200px;
+	height: 210px;
+	margin-right: 10px;
+}
+.ad{
+	width: 520px;
+	height: 210px;
+	background-color: yellow;
+}
+.message{
+	width: 230px;
+	height: 210px;
+	background-color: blue;
+}
+.subNav h2{
+	padding-left: 20px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #0266a3;
+	color: white;
+}
+.subNav{
+	background-color: #ebf0f6;
+
+}
+.subNav s{
+	display: inline-block;
+	width: 15px;
+	height: 13px;
+	background:url(../image/sprite.png) -225px 0;  
+	vertical-align: middle;
+}
+.subNav li{
+	font-size: 15px;
+	padding-top: 11px;
+	padding-left: 9px;
+
+}
+.subNav li a {
+	padding-left: 15px; 
+
 }

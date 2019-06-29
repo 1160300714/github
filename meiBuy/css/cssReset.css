@@ -33,6 +33,9 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
+a{
+	text-decoration: none;
+}
 em,
 strong,
 b,
@@ -61,4 +64,7 @@ select {
 }
 img{
 	border: 0 none;
+}
+input{
+	border: none;
 }

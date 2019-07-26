@@ -4,27 +4,62 @@
 	<title></title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<style type="text/css">
+		.father{
+			width: 500px;
+			height: 500px;
+			background: lightgreen;
+			position: relative;
+		}
+		.son{
+			width: 300px;
+			height: 300px;
+			background: green;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+		img{
+			position: absolute;
+		}
 		
-		th{
-			background-color: lightgreen;
-		}
-		td{
-			background-color: #ccc;
-		}
+	
+
 	</style>
 	
-</head>
-<body>
+</head> 
 	
+	<img src="D://p.ico">
 
-	 <p id="demo">asdasaasd</p>
+	<script type="text/javascript">
+
+		// var ul = document.querySelector("ul");
+		// ul.addEventListener("click",function (argument) {
+		// 	argument.target.style.color = "pink";
+		// 	// body...
+		// })
+
+		// document.addEventListener("contextmenu",function (argument) {
+		// 	argument.preventDefault();
+		// 	// body...
+		// })
+		// document.addEventListener("selectstart",function (argument) {
+		// 	argument.preventDefault();
+		// 	// body...
+		// })
+		var img = document.querySelector("img");
+
+		document.addEventListener("mousemove",function (argument) {
+			var x = argument.pageX;
+			var y = argument.pageY;
+			img.style.left = x + 'px';
+			img.style.top = y + 'px';
+			console.log(img.style.top);
+
+			// console.log(x);
+			// body...
+		})
 
 
-	<script type="text/javascript" >
-
-		var p = document.querySelector("p");
-		document.write(p.id);
-		document.write(p.getAttribute("id"));
 
 
 
@@ -34,6 +69,207 @@
 
 
 
+
+ 		// var a = document.querySelector("a");
+ 		// a.addEventListener("click",function (argument) {
+ 		// 	// argument.preventDefault();
+ 		// 	return false;
+ 		// 	// body...
+ 		// })
+
+
+
+		// var father = document.querySelector(".father");
+		// var son = document.querySelector(".son");
+
+		// father.addEventListener("click",function (argument) {
+		// 	alert("father");
+		// 	// body...
+		// },true)
+		// son.addEventListener("click",function (argument) {
+		// 	alert("son");
+		// 	// body...
+		// })
+
+
+
+
+		// var btn = document.querySelector("button");
+		// btn.addEventListener('click',function (argument) {
+		// 	alert("333");
+		// 	// body...
+		// })
+		// var btn3 = document.querySelectorAll("button")[1];
+		// btn3 = attachEvent('onclick',function (argument) {
+		// 	alert('sad');
+		// 	// body...
+		// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// var datas = [
+		// 			{name:'aaa',score:'323'},
+		// 			{name:'bbb',score:'198'},
+		// 			{name:'ccc',score:'453'},
+		// 			]
+
+		// var tbody = document.querySelector("tbody");
+
+		// for (var i = 0; i < datas.length; i++) {
+		// 	var tr = document.createElement('tr');
+		// 	tbody.appendChild(tr);
+
+		// 	for (var k in datas[i]) {
+		// 		var td = document.createElement('td');
+		// 		td.innerHTML = datas[i][k];
+		// 		tr.appendChild(td);
+
+		// 	}
+		// 	var td = document.createElement('td');
+		// 	td.innerHTML = '<a href = "javascript:;">删除</a>'
+		// 	tr.appendChild(td); 
+		// }
+
+		// var as = document.querySelectorAll("a");
+		// for (var i = 0; i < as.length; i++) {
+		// 	as[i].onclick = function (argument) {
+		// 		tbody.removeChild(this.parentNode.parentNode);
+		// 		// body...
+		// 	}
+		// }
+
+
+		// 克隆
+		// var ul = document.querySelector("ul"); 
+		// var a = document.querySelector("li").cloneNode(true);
+		// ul.appendChild(a);
+
+
+		// var btn = document.querySelector("button");
+		// var ul = document.querySelector("ul");
+		// btn.onclick = function (argument) {
+		// 	if (ul.children.length == 0) {
+		// 		alert("没有啦")
+		// 	}
+		// 	else{
+		// 		ul.removeChild(ul.children[0]);
+		// 	}
+			
+		// 	// body...
+		// }
+
+
+
+
+
+		// 添加留言并删除
+		// var btn = document.querySelector("button");
+		// var text = document.querySelector("textarea");
+		// var ul = document.querySelector("ul");
+
+		// btn.onclick = function (argument) {
+		// 	// console.log("sada");
+
+		// 	var li = document.createElement("li");
+		// 	li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+		// 	ul.insertBefore(li,ul.firstChild);
+
+		// 	var as = document.querySelectorAll("a");
+		// 	for (var i = 0; i < as.length; i++) {
+		// 		as[i].onclick = function (argument) {
+		// 			ul.removeChild(this.parentNode);
+		// 			// body...
+		// 		}
+		// 	}
+		// 	// body...
+		// }
+
+
+
+
+		// var lis = document.querySelectorAll(".li");
+		// for (var i = 0; i < lis.length; i++) {
+		// 	lis[i].onmouseover = function (argument) {
+		// 		this.children[1].style.display = "block";
+		// 		// body...
+		// 	}
+		// 	lis[i].onmouseout = function (argument) {
+		// 		this.children[1].style.display = "none";
+		// 		// body...
+		// 	}
+		// }
+		
+
+
+
+
+
+
+
+
+
+		// var ul = document.querySelector("ul");
+		// var lis = [];
+		// for (var i = 0; i < ul.childNodes.length; i++) {
+		// 	if (ul.childNodes[i].nodeType == 1) {
+		// 		lis[lis.length] = ul.childNodes[i];
+		// 	}
+			
+		// }
+		// console.log(lis);
+		// console.log(ul.children);
+
+
+
+		// var lis = document.querySelectorAll("li");
+		// var ps = document.querySelectorAll("p");
+
+		// for (var i = 0; i < lis.length; i++) {
+		// 	lis[i].onclick = function (argument) {
+		// 		// console.log(this);
+		// 		for (var i = 0; i < lis.length; i++) {
+		// 			lis[i].className = "";
+		// 		}
+		// 		this.className = "red";
+		// 		for (var i = 0; i < lis.length; i++) {
+		// 			ps[i].className = "";
+		// 		}
+		// 		var j = 0;
+
+		// 		for (var i = 0; i < lis.length; i++) {
+		// 			// console.log(this);
+		// 			if(lis[i] == this){
+		// 				j = i;
+		// 				break;
+		// 			}
+		// 		}
+		// 		// console.log(j);
+		// 		ps[j].className = "present";
+		// 	}
+		// }
+		
+
+
+
+
+		// var p = document.querySelector("p");
+		// document.write(p.id);
+		// document.write(p.getAttribute("id"));
 
 
 		// var input = document.querySelectorAll("input");
@@ -59,8 +295,6 @@
 		// 		// body...
 		// 	}
 		// }
-
-
 
 
 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQueryText</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+		}
+		div div div{
+			width: 300px;
+			height: 200px;
+			display: none;
+		}
+		.color{
+			background-color: #ccc;
+			border: 1px red solid;
+		}
+		.bg{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<button>sadjkl</button>
+	<button>sadjkl</button>
+
+	<div>
+		<div class="top">
+			<a href="#" class="color">淘宝</a>
+			<a href="#">淘宝</a>
+			<a href="#">淘宝</a>
+		</div>
+		<div class="bottom">
+			<div style="background-color: green" class="bg"></div>
+			<div style="background-color: red"></div>
+			<div style="background-color: blue"></div>
+		</div>
+		<div>
+			<div class=""></div>
+		</div>
+	</div>
+	
+
+
+	<script type="text/javascript">
+		$(function (argument) {
+
+			$('button').eq(0).hover(function (argument) {
+				$('div').eq(0).slideToggle();
+				// body...
+			})
+
+
+
+			$('a').click(function (argument) {
+				$(this).toggleClass('color');
+				$(this).siblings('a').removeClass('color');
+				var num = $(this).index();
+				$('.bottom').children('div').eq(num).toggleClass('bg');
+				$('.bottom').children('div').eq(num).siblings('div').removeClass('bg');
+				// body...
+			})
+			
+
+
+
+
+
+			// $('div').css({
+			// 	'width':'300px',
+			// 	'height':'500px'
+			// });
+			// $('div').mouseover(function (argument) {
+			// 	$('div').addClass('current');
+			// 	// body...
+			// })
+			// $('div').click(function (argument) {
+			// 	$('div').toggleClass('bgg');
+			// 	// body...
+			// })
+			
+			
+
+
+//			$('.ul>p').mouseover(function (argument) {
+//				$('.ul').children('ul').show();
+//				// body...
+//			})
+//			$('.ul>p').mouseout(function (argument) {
+//				$('.ul').children('ul').hide();
+//				// body...
+//			})
+//			$('.item').siblings('li').css('color','red');
+//			$('.ul').children('ul').children('li').eq(2).css('color','green');
+
+
+
+
+
+
+
+
+
+
+
+
+		})
+
+	</script>
+
+
+	
+</body>
+</html>

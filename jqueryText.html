@@ -4,70 +4,263 @@
 	<title>jQueryText</title>
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<style type="text/css">
-		a{
-			text-decoration: none;
+
+		div{
+			background-color: #ccc;
+			width: 75%;
+			margin: 0 auto;
 		}
-		div div div{
-			width: 300px;
-			height: 200px;
+		
+		.float{
+			position: fixed;
+			left: px;
+			top: 300px;
+			width: 150px;
+			height: 100px;
+			background-color:white;
 			display: none;
 		}
-		.color{
-			background-color: #ccc;
-			border: 1px red solid;
-		}
-		.bg{
-			display: block;
-		}
 
+		li{
+			list-style: none;
+			border: 1px red solid;
+			margin:10px 0 10px 0;
+			background-color: #ccc;
+		}
+		.current{
+			background-color: red;
+		}
 	</style>
 </head>
 <body>
-	
-	<button>sadjkl</button>
-	<button>sadjkl</button>
 
 	<div>
-		<div class="top">
-			<a href="#" class="color">淘宝</a>
-			<a href="#">淘宝</a>
-			<a href="#">淘宝</a>
-		</div>
-		<div class="bottom">
-			<div style="background-color: green" class="bg"></div>
-			<div style="background-color: red"></div>
-			<div style="background-color: blue"></div>
-		</div>
-		<div>
-			<div class=""></div>
-		</div>
+		<img src="d://p1.jpg">
 	</div>
-	
+
+	<div class="floor">
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+	</div>
+
+	<div class="floor">
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+	</div>
+
+	<div class="floor">
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+		<p>家用电器11</p>
+	</div>
+
+	<div class="float">
+		<ul>
+			<li>家用电器11</li>
+			<li>家用电器22</li>
+			<li>家用电器33</li>
+		</ul>
+	</div>
+
 
 
 	<script type="text/javascript">
+
+
 		$(function (argument) {
 
-			$('button').eq(0).hover(function (argument) {
-				$('div').eq(0).slideToggle();
+			tool();
+
+			$(window).scroll(function (argument) {
+				if($(document).scrollTop() > 200){
+					$(".float").fadeIn();
+				}
+				else{
+					$(".float").fadeOut();
+				}
+
+				tool();
+
+				$('.floor').each(function (i,argument) {
+					if ($(document).scrollTop() > $(argument).offset().top) {
+						// console.log(i);
+						$('li').eq(i).addClass("current");
+						$('li').eq(i).siblings().removeClass();
+					}
+					// body...
+				})
+
+
+
+
+
+
+
+
+
+
+
 				// body...
 			})
 
 
+			function tool(argument) {
+				$('li').click(function (argument) {
+				$(this).siblings().removeClass();
+				$(this).addClass("current");
+				// console.log($(this).index());
+				var temp = $('.floor').eq($(this).index()).offset().top;
+				$('body,html').stop().animate({
+					scrollTop:temp
+				});
 
-			$('a').click(function (argument) {
-				$(this).toggleClass('color');
-				$(this).siblings('a').removeClass('color');
-				var num = $(this).index();
-				$('.bottom').children('div').eq(num).toggleClass('bg');
-				$('.bottom').children('div').eq(num).siblings('div').removeClass('bg');
-				// body...
-			})
+			})// body...
+			}
+
+
 			
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+			//append
+			//prepend
+			//before
+			//after
+			//remove
+			//empty
+
+
+
+
+
+			// $.each($('div'),function (i,argument) {
+			// 	console.log(i);
+			// 	// body...
+			// })
+
+
+			// $('div').each(function (i,domEle) {
+			// 	// console.log(domEle);
+			// 	$(domEle).css("backgroundColor",array[i]);
+			// 	sum += parseInt($(domEle).text());
+			// 	// body...
+			// })
+			
+			// console.log(sum);
+
+
+
+
+			// $('.checkall').change(function (argument) {
+			// 	var temp = $(this).prop('checked');
+			// 	// console.log(temp);
+			// 	$('.checkone').prop('checked',temp);
+			// 	$('.checkall').prop('checked',temp);
+			// 	// body...
+			// })
+			// $('.checkone').change(function (argument) {
+			// 	if($('.checkone:checked').length == 3){
+			// 		// console.log($('.checkone:checked').length);
+			// 		$('.checkall').prop('checked',true);
+			// 	}else{
+			// 		$('.checkall').prop('checked',false);
+			// 	}
+			// 	// body...
+			// })
+
+
+			// $('span').data('aaa','sadhlj');
+			// console.log($('span').data('aaa'))
+
+
+
+			// console.log($('a').prop('href'));
+			// console.log($('a').prop('title','saldj'));
+
+			//prop属性
+			//attr自定义属性
+			//data存数据
+
+
+
+			// $('li').mouseenter(function (argument) {
+			// 	var index = $(this).index();
+
+			// 	$(this).stop().animate({
+			// 		width:224
+			// 	},200)
+			// 	$(this).siblings().stop().animate({
+			// 		width:69
+			// 	},200)
+
+			// 	$(this).find('.short').stop().fadeOut();
+			// 	$(this).find('.long').stop().fadeIn();
+
+			// 	$(this).siblings().find('.short').stop().fadeIn();
+			// 	$(this).siblings().find('.long').stop().fadeOut();
+			// 	// body...
+			// })
+
+			
 
 			// $('div').css({
 			// 	'width':'300px',
@@ -84,7 +277,6 @@
 			
 			
 
-
 //			$('.ul>p').mouseover(function (argument) {
 //				$('.ul').children('ul').show();
 //				// body...
@@ -95,14 +287,6 @@
 //			})
 //			$('.item').siblings('li').css('color','red');
 //			$('.ul').children('ul').children('li').eq(2).css('color','green');
-
-
-
-
-
-
-
-
 
 
 

@@ -2,183 +2,258 @@
 <html>
 <head>
 	<title>jQueryText</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<style type="text/css">
+		body{
+			text-align: center;
+		}
 
+		#input{
+			display: block;
+			width: 500px;
+			margin: 0 auto;
+
+		}
 		div{
-			background-color: #ccc;
-			width: 75%;
+			width: 500px;
 			margin: 0 auto;
 		}
-		
-		.float{
-			position: fixed;
-			left: px;
-			top: 300px;
-			width: 150px;
-			height: 100px;
-			background-color:white;
-			display: none;
-		}
-
 		li{
 			list-style: none;
-			border: 1px red solid;
-			margin:10px 0 10px 0;
+		}
+		div input{
+			display: inline;
+		}
+		div p{
+			display: inline-block;
+			text-align: left;
+			width: 300px;
+		}
+		li{
+			display: block;
+			height: 25px;
+			background-color: #EEE;
+			margin-top: 2px;
+		}
+		.div{
+			width: 100%;
 			background-color: #ccc;
 		}
-		.current{
-			background-color: red;
+		ul{
+			color: #ccc;
 		}
+
 	</style>
+
 </head>
 <body>
-
+	<div class="div">
+		<input id="input" type="text" name="" placeholder="添加todo">
+	</div>
+	
+	<h2><span>正在进行</span><span id="doing" style="font-size: 15px"></span></h2>
 	<div>
-		<img src="d://p1.jpg">
+		<ol>
+			
+		</ol>
 	</div>
-
-	<div class="floor">
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-	</div>
-
-	<div class="floor">
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-	</div>
-
-	<div class="floor">
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-		<p>家用电器11</p>
-	</div>
-
-	<div class="float">
+	<h2><span>已经完成</span><span id="done" style="font-size: 15px"></span></h2>
+	<div>
 		<ul>
-			<li>家用电器11</li>
-			<li>家用电器22</li>
-			<li>家用电器33</li>
+			
 		</ul>
 	</div>
-
-
-
+	
+	
 	<script type="text/javascript">
 
+		$(function () {
 
-		$(function (argument) {
+			load();
+			changeNumber();
 
-			tool();
+			$("#input").on("keydown",function (event) {
 
-			$(window).scroll(function (argument) {
-				if($(document).scrollTop() > 200){
-					$(".float").fadeIn();
+				if(event.keyCode === 13){
+					var local = getData();
+					// console.log(local);
+					local.push({ 
+						title:$(this).val(),
+						done:false
+						});
+					saveData(local);
+					load();
+					$(this).val("");
+				}
+				changeNumber();
+
+			});
+
+			function getData() {
+				var data = localStorage.getItem("todolist");
+				if(data !== null){
+					return JSON.parse(data);
 				}
 				else{
-					$(".float").fadeOut();
+					return [];
 				}
+				// body...
+			};
 
-				tool();
+			function saveData(data) {
+				localStorage.setItem("todolist",JSON.stringify(data));
+				// body...
+			}
 
-				$('.floor').each(function (i,argument) {
-					if ($(document).scrollTop() > $(argument).offset().top) {
-						// console.log(i);
-						$('li').eq(i).addClass("current");
-						$('li').eq(i).siblings().removeClass();
+			function load() {
+				$("ol").empty();
+				$("ul").empty();
+				var data = getData();
+				// console.log(data);
+				$.each(data,function (i,argument) {
+					// console.log(argument);
+					if(argument.done){
+						$("ul").prepend("<li><input type='checkbox' checked='checked'><p>"+ argument.title +"</p><a href='#'' id="+i+">X</a></li>");
+					}else{
+						$("ol").prepend("<li><input type='checkbox'><p>"+ argument.title +"</p><a href='#'' id="+i+">X</a></li>");
 					}
-					// body...
+					
 				})
+				// body...
+			}
 
-
-
-
-
-
-
-
-
-
-
+			$("ol,ul").on("click","a",function (argument) {
+				var data = getData();
+				var index = $(this).attr("id");
+				data.splice(index,1);
+				saveData(data);
+				load();
+				changeNumber();
 				// body...
 			})
 
+			$("ol,ul").on("click","input",function (argument) {
+				// alert("11");
+				var data = getData();
+				var index = $(this).siblings("a").attr("id");
+				data[index].done = $(this).prop("checked");
+				// console.log(data);
+				saveData(data);
+				load();
+				changeNumber();
+				// body...
+			})
 
-			function tool(argument) {
-				$('li').click(function (argument) {
-				$(this).siblings().removeClass();
-				$(this).addClass("current");
-				// console.log($(this).index());
-				var temp = $('.floor').eq($(this).index()).offset().top;
-				$('body,html').stop().animate({
-					scrollTop:temp
-				});
-
-			})// body...
+			function changeNumber() {
+				var doing = 0;
+				var done = 0;
+				var data = getData();
+				$.each(data,function (i,argument) {
+					if(argument.done){
+						done++;
+					}else{
+						doing++;
+					}
+					// body...
+				})
+				$("#doing").text(doing);
+				$("#done").text(done);
+				// body...
 			}
 
 
+
+
+
+
+
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// $(function (argument) {
+
+		// 	var a = {
+		// 		temp: "eee",
+		// 		gant: 15
+		// 	}
+		// 	var b = {
+		// 		temp: "ses",
+		// 		name: "sfg"
+		// 	}
+
+		// 	$.extend(a,b);
+		// 	console.log(a);
+		// 	//浅拷贝会把复杂数据类型地址传过去  
+			//深拷贝重新复制一份复杂数据类型，合并然后给过去
+
+
+
+			// $(".btn").on("click",function (argument) {
+			// 	var li = $("<li></li>");
+			// 	li.html($(".text").val() + "<a href='javascript:;'>删除</a>");
+			// 	$("ul").prepend(li);
+			// 	li.slideDown();
+			// 	$('.text').val("");
+			// 	// body...
+			// })
+			// $("ul").on("click","a",function (argument) {
+			// 	$(this).parent().slideUp(function (argument) {
+			// 		$(this).remove();
+			// 		// body...
+			// 	});
+			// 	// body...
+			// })
+
+
+
+			// $("div").click(function (argument) {
+			// 	$(this).css("backgroundColor","pink");
+			// 	// body...
+			// })
+
+			// $("div").on({
+			// 	mouseover:function (argument) {
+			// 		$(this).css("backgroundColor","blue");
+			// 		// body...
+			// 	},
+			// 	click:function (argument) {
+			// 		$(this).css("backgroundColor","pink");
+			// 		// body...
+			// 	}
+			// })
 			
+			// $("div").on("mouseover mouseout",function (argument) {
+			// 	alert("sad");
+			// 	// body...
+			// })
 
-
-
-
-
-
-
-
-
-
-
-
+			//on 可以给未来创建元素绑定事件
 
 
 			//append
@@ -187,8 +262,6 @@
 			//after
 			//remove
 			//empty
-
-
 
 
 
@@ -289,9 +362,6 @@
 //			$('.ul').children('ul').children('li').eq(2).css('color','green');
 
 
-
-
-		})
 
 	</script>
 
